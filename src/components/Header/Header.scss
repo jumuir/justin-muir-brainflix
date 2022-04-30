@@ -1,0 +1,8 @@
+@use '../../styles/partials/global';
+@use '../../styles/partials/colors';
+
+
+.header {
+    background-color: $White;
+    color: $BrainFlix-Blue;
+}
