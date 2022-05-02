@@ -1,8 +1,25 @@
-@use '../../styles/partials/global';
 @use '../../styles/partials/colors';
+//@use '../../styles/partials/breakpoints';
 
 
 .header {
-    background-color: $White;
-    color: $BrainFlix-Blue;
+    background-color: colors.$White;
+    color: colors.$BrainFlix-Black;
+    display: flex;
+    flex-direction: column;
+
+    &__logo {
+        max-width: 120px;
+        max-height: 25px;
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__upload-button {
+        order: 2;
+    }
 }
