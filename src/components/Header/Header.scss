@@ -1,5 +1,5 @@
 @use '../../styles/partials/colors';
-//@use '../../styles/partials/breakpoints';
+@use '../../styles/partials/breakpoints';
 
 
 .header {
@@ -7,19 +7,86 @@
     color: colors.$BrainFlix-Black;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
 
     &__logo {
         max-width: 120px;
         max-height: 25px;
+        margin-bottom: 1rem;
+    }
+
+    &__search-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid colors.$Mercury;
+        background-color: colors.$Alabaster;
+        border-radius: 4px;
+        flex-grow: 1;
+        height: 2.25rem;
+        box-sizing: border-box;
+        padding: .75rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+
+        & > input {
+            border: none;
+            background-color: transparent;
+            font-size: .75rem;
+            padding-left: 0.75rem;
+        }
     }
 
     &__right {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        
+    }
 
+    &__image {
+
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 50%;
+        background-image: url('../../assets/images/images/Mohan-muruge.jpg');
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 1rem;
     }
 
     &__upload-button {
-        order: 2;
+
+        display: flex;
+        border-radius: 4px;
+        border: none;
+        align-items: center;
+        height: 2.25rem;
+        font-weight: 700;
+        order: 1;
+        flex-basis: 100%;
+        color: colors.$White;
+        background-color: colors.$BrainFlix-Blue;
+        padding: 0.75rem;
+
+        & > img {
+            position: absolute;
+            float: left;
+        }
+
+        & > p {
+            text-align: center;
+            width: 100%;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        &:hover {
+            background-color: colors.$BrainFlix-DarkBlue;
+        }
     }
 }
