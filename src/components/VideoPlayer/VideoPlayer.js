@@ -1,9 +1,14 @@
 import './VideoPlayer.scss';
 
-const VideoPlayer = () => {
+
+const VideoPlayer = (props) => {
+    const mainVideo = props.mainVideo;
+
     return (<>
-        <section className='player-container'>
-            
+        <section className='video-container'>
+            <video controls poster={mainVideo.image}>
+
+            </video>
         </section>
     </>
     )

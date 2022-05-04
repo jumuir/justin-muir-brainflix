@@ -1,0 +1,12 @@
+.video-container {
+    max-width: 100%;
+    background-color: black;
+    max-height: 20rem;
+    display: flex;
+    justify-content: center;
+
+    & > video {
+        max-width: inherit;
+        max-height: inherit;
+    }
+}

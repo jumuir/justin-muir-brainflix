@@ -1,6 +1,6 @@
-import './VideoList.scss';
+import './VideosList.scss';
 
-const VideoList = () => {
+const VideosList = () => {
     return (<>
         <section className='list-container'>
             
@@ -10,4 +10,4 @@ const VideoList = () => {
 
 }
 
-export default VideoList
+export default VideosList
