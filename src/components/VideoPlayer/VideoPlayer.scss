@@ -1,7 +1,9 @@
+@use '../../styles/partials/colors';
+
 .video-container {
     max-width: 100%;
-    background-color: black;
-    max-height: 20rem;
+    background-color: colors.$BrainFlix-DarkBlack;
+    max-height: 60rem;
     display: flex;
     justify-content: center;
 
