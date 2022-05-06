@@ -4,6 +4,7 @@ import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import videoDetails from './data/video-details.json';
 import videos from './data/videos.json';
 import './App.scss';
+import VideoInfo from './components/VideoInfo/VideoInfo';
 
 
 
@@ -17,6 +18,7 @@ class App extends Component {
       <>
       <Header />
       <VideoPlayer mainVideo={this.state.mainVideo} />
+      <VideoInfo mainVideo={this.state.mainVideo} />
       </>
     );
   }
