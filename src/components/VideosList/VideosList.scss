@@ -1,5 +1,16 @@
-.videos-list__container {
-    width: 100%;
-    padding: 1rem;
-    
+@use '../../styles/partials/colors';
+@use '../../styles/partials/breakpoints';
+
+.videos-list {
+    &__title {
+        color: colors.$Silver;
+        font-weight: bold;
+        font-size: .75rem;
+        line-height: 1.25rem;
+    }
+    &__container {
+        width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
 }

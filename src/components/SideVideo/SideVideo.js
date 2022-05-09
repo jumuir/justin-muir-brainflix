@@ -3,7 +3,7 @@ import './SideVideo.scss';
 
 const SideVideo = (props) => {
 
-    const clickHandler = () => {
+    const handleOnClick = () => {
         console.log(props.id);
     }
 
@@ -11,10 +11,10 @@ const SideVideo = (props) => {
     return (<>
         <div 
             className='side-video__container'
-            onClick={clickHandler}
+            onClick={handleOnClick}
         >
             <div className='side-video__image-container'>
-                <img src={props.image} alt=''/>
+                <img className='side-video__image' src={props.image} alt=''/>
             </div>
             <div className='side-video__copy'>
                 <p className='side-video__title'>
