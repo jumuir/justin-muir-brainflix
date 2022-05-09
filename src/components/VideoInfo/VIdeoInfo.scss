@@ -1,0 +1,70 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/breakpoints';
+
+.video-info {
+    
+    &__container {
+        padding: 1.5rem 1rem 1rem;
+        color: colors.$BrainFlix-Black;
+    }
+    
+    &__title {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 700;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid colors.$Mercury;
+    }
+
+    &__info-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem 0;
+        line-height: 1.25rem;
+        font-size: 1remrem;
+        border-bottom: 1px solid colors.$Mercury;
+    }
+
+    &__channel {
+        width: 50%;
+        padding-bottom: 1rem;
+
+        & p {
+            font-weight: bold;
+        }
+    }
+    &__views {
+        width: 50%;
+        padding-bottom: 1rem;
+        color: colors.$Silver;
+        
+        & img {
+            height: 1rem;
+            vertical-align: text-bottom;
+        }
+
+        & span {
+            padding-left: .75rem;
+        }
+    }
+    &__date {
+        width: 50%;
+    }
+    &__likes {
+        width: 50%;
+        color: colors.$Silver;
+
+        & img {
+            height: 1rem;
+            vertical-align: text-bottom;
+        }
+
+        & span {
+            padding-left: .75rem;
+        }
+    }
+
+    &__description {
+        padding-top: 1rem;
+    }
+}
