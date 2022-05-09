@@ -25,14 +25,14 @@ const VideoInfo = (props) => {
                     <p>By {channel}</p>
                 </div>
                 <div className='video-info__views'>
-                    <img src={viewsImg}/>
+                    <img src={viewsImg} alt=''/>
                     <span>{views}</span>
                 </div>
                 <div className='video-info__date'>
                     <p>{date}</p>
                 </div>
                 <div className='video-info__likes'>
-                    <img src={likesImg}/>
+                    <img src={likesImg} alt=''/>
                     <span>{likes}</span>
                 </div>
             </div>
