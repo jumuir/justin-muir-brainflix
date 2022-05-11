@@ -1,4 +1,5 @@
 import './VideoInfo.scss';
+import { dateMaker } from '../../utilities/helper-functions';
 import likesImg from '../../assets/images/icons/likes.svg';
 import viewsImg from '../../assets/images/icons/views.svg';
 
@@ -10,52 +11,6 @@ const VideoInfo = (props) => {
     const views = mainVideo.views;
     const desc = mainVideo.description;
     const timeDiff = (new Date ()) - (new Date(mainVideo.timestamp));
-    
-    // Diving deeper date function
-    const dateMaker = timeDiff => {
-        let dateDisplayed = '';
-        let roundedTime = 0;
-    
-        if (timeDiff < 1000) {
-            dateDisplayed = 'Just now';
-        } 
-        else if (timeDiff <= 60000) {
-            roundedTime = Math.round(timeDiff / 1000);
-            if (roundedTime === 1) {
-                dateDisplayed = `${roundedTime} second ago`;
-            } else {
-                dateDisplayed = `${roundedTime} seconds ago`;
-            }
-        }
-        else if (timeDiff <= 3600000) {
-            roundedTime = Math.round(timeDiff / 60000);
-            if (roundedTime === 1) {
-                dateDisplayed = `${roundedTime} minute ago`;
-            } else {
-                dateDisplayed = `${roundedTime} minutes ago`;
-            }
-        }
-        else if (timeDiff <= 86400000) {
-            roundedTime = Math.round(timeDiff / 3600000);
-            if (roundedTime === 1) {
-                dateDisplayed = `${roundedTime} hour ago`;
-            } else {
-                dateDisplayed = `${roundedTime} hours ago`;
-            }
-        }
-        else {
-            roundedTime = Math.round(timeDiff / 86400000);
-            if (roundedTime === 1) {
-                dateDisplayed = `${roundedTime} day ago`;
-            } else if (roundedTime > 365) {
-                dateDisplayed = "Over a year ago";
-            } else {
-                dateDisplayed = `${roundedTime} days ago`;
-            }
-        }
-    
-        return dateDisplayed;
-    }
     
     const date = dateMaker(timeDiff);
 
@@ -71,14 +26,14 @@ const VideoInfo = (props) => {
                     <p>By {channel}</p>
                 </div>
                 <div className='video-info__views'>
-                    <img src={viewsImg}/>
+                    <img src={viewsImg} alt=''/>
                     <span>{views}</span>
                 </div>
                 <div className='video-info__date'>
                     <p>{date}</p>
                 </div>
                 <div className='video-info__likes'>
-                    <img src={likesImg}/>
+                    <img src={likesImg} alt=''/>
                     <span>{likes}</span>
                 </div>
             </div>

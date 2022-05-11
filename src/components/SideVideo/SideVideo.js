@@ -3,15 +3,15 @@ import './SideVideo.scss';
 
 const SideVideo = (props) => {
 
-    const handleOnClick = () => {
-        console.log(props.id);
+    const handleSideVideoClick = () => {
+        props.changeMainVideo(props.id);
     }
 
 
     return (<>
         <div 
             className='side-video__container'
-            onClick={handleOnClick}
+            onClick={handleSideVideoClick}
         >
             <div className='side-video__image-container'>
                 <img className='side-video__image' src={props.image} alt=''/>

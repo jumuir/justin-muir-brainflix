@@ -12,22 +12,20 @@
 
     &__image {
         background-color: colors.$Mercury;
-        width: 100%;
+        object-fit: cover;
+        height: 3.5rem;
+        width: 6.5rem;
         border-radius: 4px;
 
         &-container {
-            border-radius: 4px;
-            overflow: hidden;
-            max-width: 6rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 6.5rem;
         }
     }
 
     &__copy {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         padding-left: 1rem;
     }
 
@@ -37,12 +35,14 @@
         -webkit-box-orient: vertical;  
         text-overflow: ellipsis;
         overflow: hidden;
-        font-size: 0.875rem;
-        font-weight: 700;
+        font-size: 0.813rem;
+        line-height: 1.125rem;
+        font-weight: 600;
     }
 
     &__channel {
-        font-size: 0.875rem;
+        font-size: 0.813rem;
+        line-height: 1.125rem;
     }
 
 }

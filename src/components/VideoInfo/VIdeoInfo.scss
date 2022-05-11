@@ -20,8 +20,8 @@
         display: flex;
         flex-wrap: wrap;
         padding: 1rem 0;
-        line-height: 1.25rem;
-        font-size: 1remrem;
+        font-size: 0.813rem;
+        line-height: 1.125rem;
         border-bottom: 1px solid colors.$Mercury;
     }
 
@@ -37,6 +37,7 @@
         width: 50%;
         padding-bottom: 1rem;
         color: colors.$Silver;
+        
         
         & img {
             height: 1rem;
@@ -66,5 +67,7 @@
 
     &__description {
         padding-top: 1rem;
+        font-size: 0.813rem;
+        line-height: 1.125rem;
     }
 }
