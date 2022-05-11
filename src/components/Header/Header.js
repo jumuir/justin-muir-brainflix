@@ -1,5 +1,4 @@
 import logo from '../../assets/images/logos/BrainFlix-logo.svg';
-import uploadImg from '../../assets/images/icons/upload.svg';
 import './Header.scss';
 
 const Header = () => {
@@ -13,8 +12,7 @@ const Header = () => {
                 
                 <input className='header__search-container' type='text' placeholder='Search'></input> 
                 
-                <button type='submit' value='submit' className='header__upload-button'>
-                    <img src={uploadImg}/>
+                <button type='submit' value='submit' className='header__upload-button'>      
                     <p>UPLOAD</p>
                 </button>
                 

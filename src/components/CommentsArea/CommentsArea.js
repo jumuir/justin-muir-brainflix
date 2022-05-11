@@ -1,6 +1,5 @@
 import './CommentsArea.scss';
 import Comment from '../Comment/Comment';
-import commentImg from '../../assets/images/icons/add_comment.svg';
 
 const CommentsArea = (props) => {
     return (<>
@@ -14,7 +13,6 @@ const CommentsArea = (props) => {
                     <textarea name="comment" className="form-input" id="comment" placeholder="Add a new comment"></textarea>
                     <div className="btn-container">
                         <button type="submit" id="submit">
-                            <img src={commentImg} alt=''/>
                             <p>COMMENT</p>
                         </button>
                     </div>
