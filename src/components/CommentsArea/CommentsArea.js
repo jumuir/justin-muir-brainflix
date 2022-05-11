@@ -23,7 +23,6 @@ const CommentsArea = (props) => {
             <div>
                 {props.mainVideo.comments.map((content, index) => <Comment
                     key={index} 
-                    dateMaker={props.dateMaker} 
                     name={content.name} 
                     timestamp={content.timestamp} 
                     comment={content.comment}

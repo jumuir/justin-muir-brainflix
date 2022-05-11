@@ -1,9 +1,10 @@
 import './Comment.scss';
+import { dateMaker } from '../../utilities/helper-functions';
 
 const Comment = (props) => {
     const timeDiff = (new Date ()) - (new Date(props.timestamp));
     
-    const date = props.dateMaker(timeDiff);
+    const date = dateMaker(timeDiff);
     
     return (<>
         <section className='comment__container'>

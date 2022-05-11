@@ -1,4 +1,5 @@
 import './VideoInfo.scss';
+import { dateMaker } from '../../utilities/helper-functions';
 import likesImg from '../../assets/images/icons/likes.svg';
 import viewsImg from '../../assets/images/icons/views.svg';
 
@@ -11,7 +12,7 @@ const VideoInfo = (props) => {
     const desc = mainVideo.description;
     const timeDiff = (new Date ()) - (new Date(mainVideo.timestamp));
     
-    const date = props.dateMaker(timeDiff);
+    const date = dateMaker(timeDiff);
 
     return (<>
         <section className='video-info__container'>
