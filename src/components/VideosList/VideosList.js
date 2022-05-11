@@ -7,11 +7,13 @@ const VideosList = (props) => {
             <h4 className='videos-list__title'>NEXT VIDEOS</h4>
 
             {props.sideVideos.map((content) => <SideVideo 
-                key={content.id}
+                key={content.id} 
                 id={content.id} 
                 title={content.title} 
                 channel={content.channel} 
-                image={content.image}
+                image={content.image} 
+                changeMainVideo={props.changeMainVideo} 
+                changeSideVideos={props.changeSideVideos} 
                 />)}
             
         </section>

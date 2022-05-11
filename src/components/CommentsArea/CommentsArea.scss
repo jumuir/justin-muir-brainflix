@@ -4,27 +4,13 @@
 .comments {
     &__container{
         padding: 0 1rem;
-        margin-bottom: 1rem;
         
         @include breakpoints.tablet {
             padding: 0 2.25rem;
-            margin-bottom: 2.25rem;
         }
     
         @include breakpoints.desktop {
         padding: 0 calc((100vw - 63.75rem) / 2);
-        }
-    }
-    &__title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: colors.$BrainFlix-Black;
-        padding: 1.5rem 0 1rem;
-
-        @include breakpoints.tablet {
-            font-size: 2.25rem;
-            line-height: 1;
-            padding: 3rem 0 2.25rem;
         }
     }
 
@@ -66,7 +52,7 @@
 
         flex-grow: 1;
         
-        label {
+        &-title {
             font-size: 0.625rem;
             line-height: 1.25rem;
             color: colors.$Mercury;
@@ -87,16 +73,29 @@
         }
 
         #submit {
-            all: unset;
-            font-size: 0.875rem;
-            text-align: center;
-            height: 2.5rem;
-            width: 100%;
+            display: flex;
             border-radius: 4px;
-            background-color: colors.$BrainFlix-Blue;
-            color: colors.$White;
+            border: none;
+            align-items: center;
+            height: 2.25rem;
             font-weight: 700;
-            box-sizing: border-box;
+            order: 1;
+            flex-basis: 100%;
+            color: colors.$White;
+            background-color: colors.$BrainFlix-Blue;
+            padding: 0.75rem;
+
+            & > img {
+                position: absolute;
+                float: left;
+            }
+    
+            & > p {
+                text-align: center;
+                width: 100%;
+                font-size: 0.75rem;
+                font-weight: 700;
+            }
 
             &:hover {
                 background-color: colors.$BrainFlix-DarkBlue;
@@ -129,6 +128,6 @@
 
     &:focus, &:focus-visible {
         outline: none;
-        border: 1px solid colors.$BrainFlix-Blue;
+        border: 2px solid colors.$BrainFlix-Blue;
     }
 }

@@ -5,6 +5,8 @@ const SideVideo = (props) => {
 
     const handleOnClick = () => {
         console.log(props.id);
+        props.changeMainVideo(props.id);
+        props.changeSideVideos(props.id);
     }
 
 

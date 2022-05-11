@@ -13,17 +13,20 @@ import './App.scss';
 class App extends Component {
   state = {
     mainVideo: videoDetails[0],
-    sideVideos: videos
+    sideVideos: videos.filter(video => video.id !== videoDetails[0].id)
   }
 
-  changeSideVideos = (mainVideo) => {
-    const newVideoArr = videos.slice();
-    newVideoArr.filter(video => video.id !== mainVideo.id);
+  changeSideVideos = (mainVideoId) => {
+    let newVideoArr = videos.slice();
+    newVideoArr = newVideoArr.filter(video => video.id !== mainVideoId);
+    console.log(newVideoArr);
     this.setState({ sideVideos:newVideoArr });
   }
 
-  changeMainVideo = (video) => {
-    videoDetails.filter()
+  changeMainVideo = (videoId) => {
+    const newMainVideo = videoDetails.filter(details => details.id === videoId);
+    console.log(newMainVideo[0]);
+    this.setState({ mainVideo:newMainVideo[0] });
   }
 
   // Diving deeper date function
@@ -79,7 +82,7 @@ class App extends Component {
       <VideoPlayer mainVideo={this.state.mainVideo} />
       <VideoInfo mainVideo={this.state.mainVideo} dateMaker={this.dateMaker}/>
       <CommentsArea mainVideo={this.state.mainVideo} dateMaker={this.dateMaker}/>
-      <VideosList changeSideVideos={this.changeSideVideos} sideVideos={this.state.sideVideos}/>
+      <VideosList changeSideVideos={this.changeSideVideos} changeMainVideo={this.changeMainVideo} sideVideos={this.state.sideVideos}/>
       </>
     );
   }
