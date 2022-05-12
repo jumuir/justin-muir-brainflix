@@ -8,3 +8,26 @@
   font-family: "AvenirNext LT Pro", sans-serif;
   font-weight: 400;
 }
+
+.desktop-columns {
+  
+  @include breakpoints.desktop {
+    display: flex;
+    padding: 0 calc((100vw - 63.75rem) / 2);
+  }
+
+  &__right {
+
+    @include breakpoints.desktop {
+      width: 30%;
+      border-left: 1px solid colors.$Mercury;
+    }
+  }
+
+  &__left {
+
+    @include breakpoints.desktop {
+      width: 70%;
+    }
+  }
+}
