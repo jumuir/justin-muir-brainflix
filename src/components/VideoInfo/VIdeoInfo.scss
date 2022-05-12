@@ -10,6 +10,10 @@
         @include breakpoints.tablet {
             padding: 2.25rem 2.25rem 1.5rem;
         }
+
+        @include breakpoints.desktop {
+            padding: 2.25rem 0 1.5rem;
+        }
     }
     
     &__title {
@@ -25,6 +29,10 @@
             padding-bottom: 1.5rem;
             border: none;
         }
+
+        @include breakpoints.desktop {
+            padding: 0 1.5rem 1.5rem 0;
+        }        
     }
 
     &__info-container {
@@ -40,6 +48,10 @@
             line-height: 1.375rem;
             flex-wrap: nowrap;
         }
+
+        @include breakpoints.desktop {
+            padding: 0 1.5rem 1rem 0;
+        }   
     }
 
     &__channel {
@@ -117,5 +129,9 @@
             font-size: 0.875rem;
             line-height: 1.375rem;
         }
+
+        @include breakpoints.desktop {
+            padding: 1.5rem 1.5rem 0 0;
+        }   
     }
 }

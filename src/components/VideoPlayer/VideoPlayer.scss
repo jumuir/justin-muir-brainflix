@@ -10,9 +10,17 @@
     @include breakpoints.tablet {
         padding: 0 2.25rem;
     }
-    
+
+    @include breakpoints.desktop {
+        padding: 0
+    }   
+
     & > video {
         max-width: inherit;
         max-height: inherit;
+
+        @include breakpoints.desktop {
+            max-height: 40vw;
+        }   
     }
 }

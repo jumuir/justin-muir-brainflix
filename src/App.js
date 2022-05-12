@@ -27,9 +27,15 @@ class App extends Component {
       <>
       <Header />
       <VideoPlayer mainVideo={this.state.mainVideo} />
-      <VideoInfo mainVideo={this.state.mainVideo}/>
-      <CommentsArea mainVideo={this.state.mainVideo}/>
-      <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo} sideVideos={this.state.sideVideos}/>
+      <div className='desktop-columns'>
+        <div className='desktop-columns__left'>
+          <VideoInfo mainVideo={this.state.mainVideo}/>
+          <CommentsArea mainVideo={this.state.mainVideo}/>
+        </div>
+        <div className='desktop-columns__right'>
+          <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo} sideVideos={this.state.sideVideos}/>
+        </div>
+      </div>
       </>
     );
   }
