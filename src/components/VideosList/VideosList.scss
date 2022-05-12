@@ -12,5 +12,10 @@
         width: 100%;
         padding: 1rem;
         box-sizing: border-box;
+
+        @include breakpoints.tablet {
+            width: 48%;
+            padding: 1.5rem;
+        }
     }
 }

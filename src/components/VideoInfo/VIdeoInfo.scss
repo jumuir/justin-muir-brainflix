@@ -6,6 +6,10 @@
     &__container {
         padding: 1.5rem 1rem 1rem;
         color: colors.$BrainFlix-Black;
+
+        @include breakpoints.tablet {
+            padding: 2.25rem 2.25rem 1.5rem;
+        }
     }
     
     &__title {
@@ -14,6 +18,13 @@
         font-weight: 700;
         padding-bottom: 1rem;
         border-bottom: 1px solid colors.$Mercury;
+        
+        @include breakpoints.tablet {
+            font-size: 2.063rem;
+            line-height: 2.75rem;
+            padding-bottom: 1.5rem;
+            border: none;
+        }
     }
 
     &__info-container {
@@ -23,11 +34,26 @@
         font-size: 0.813rem;
         line-height: 1.125rem;
         border-bottom: 1px solid colors.$Mercury;
+
+        @include breakpoints.tablet {
+            padding: 0 0 1rem;
+            line-height: 1.375rem;
+            flex-wrap: nowrap;
+        }
     }
 
     &__channel {
         width: 50%;
         padding-bottom: 1rem;
+        font-size: 0.813rem;
+        line-height: 1.125rem;
+        
+        @include breakpoints.tablet {
+            width: auto;
+            padding: 0 1.5rem 0 0;
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
 
         & p {
             font-weight: bold;
@@ -38,6 +64,11 @@
         padding-bottom: 1rem;
         color: colors.$Silver;
         
+        @include breakpoints.tablet {
+            padding: 0 1.5rem 0 0;
+            width: auto;
+            order: 1;
+        }
         
         & img {
             height: 1rem;
@@ -50,10 +81,21 @@
     }
     &__date {
         width: 50%;
+        color: colors.$Silver;
+
+        @include breakpoints.tablet {
+            width: auto;
+            flex-grow: 1;
+        }
     }
     &__likes {
         width: 50%;
         color: colors.$Silver;
+
+        @include breakpoints.tablet {
+            width: auto;
+            order: 1;
+        }
 
         & img {
             height: 1rem;
@@ -69,5 +111,11 @@
         padding-top: 1rem;
         font-size: 0.813rem;
         line-height: 1.125rem;
+
+        @include breakpoints.tablet {
+            padding-top: 1.5rem;
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
     }
 }
