@@ -73,6 +73,7 @@
         display: flex;
         flex-direction: column;
 
+
         @include breakpoints.tablet {
             flex-direction: row;
         }
@@ -80,19 +81,8 @@
         &-title {
             font-size: 0.75rem;
             line-height: 1.25rem;
-            color: colors.$Mercury;
+            color: colors.$Silver;
             font-weight: 700;
-        }
-
-        #comment {
-            height: 6rem;
-            resize: none;
-
-            @include breakpoints.tablet {
-                height: 2.5rem;
-
-                min-width: 15rem;
-            }
         }
 
         #submit {
@@ -147,6 +137,9 @@
             border: 1px solid colors.$Mercury;
             padding: 0.75rem;
             background-color: colors.$Alabaster;
+            margin-bottom: 0.75rem;
+            height: 6rem;
+            resize: none;
         
             &:focus, &:focus-visible {
                 outline: none;
@@ -156,6 +149,9 @@
             @include breakpoints.tablet {
                 font-size: 0.875rem;
                 overflow: hidden;
+                margin-bottom: 0;
+                height: 2.5rem;
+                min-width: 15rem;
             }
         }
     }
