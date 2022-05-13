@@ -1,30 +1,55 @@
 @use '../../styles/partials/colors';
 @use '../../styles/partials/breakpoints';
 
-.video-container {
-    max-width: 100%;
-    background-color: colors.$BrainFlix-DarkBlack;
-    display: flex;
-    justify-content: center;
-    
-    @include breakpoints.tablet {
-        padding: 0 2.25rem;
-    }
+.video {
 
-    @include breakpoints.desktop {
-        padding: 0
-    }   
-
-    & > video {
-        max-width: inherit;
-        max-height: inherit;
+    &-container {
+        max-width: 100%;
+        background-color: colors.$BrainFlix-DarkBlack;
+        display: flex;
+        justify-content: center;
+        position: relative;
         
         @include breakpoints.tablet {
-            max-height: 70vh;
-        } 
+            padding: 0 2.25rem;
+        }
 
         @include breakpoints.desktop {
-            max-width: 63.75rem;
+            padding: 0
         }   
+
+        & > video {
+            max-width: inherit;
+            max-height: inherit;
+            
+            @include breakpoints.tablet {
+                max-height: 70vh;
+            } 
+
+            @include breakpoints.desktop {
+                max-width: 63.75rem;
+            }   
+        }
     }
+
+    &-controls {
+        z-index: 1;
+        position: absolute;
+        left: 50%;
+        bottom: 1rem;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        background-color: rgb(50, 50, 50, 0.5);
+        padding: .25rem;
+        box-sizing: border-box;
+        display: flex;
+        border-radius: 4px;
+        gap: .5rem;
+    }
+
+    &-button {
+        color: colors.$White;
+    }
+
+
 }
