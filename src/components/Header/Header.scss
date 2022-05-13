@@ -19,6 +19,10 @@
         padding: 1.5rem 2.25rem;
     }
 
+    @include breakpoints.desktop {
+        padding: 1.5rem calc((100vw - 63.75rem) / 2);
+      }
+
     &__logo {
         max-width: 120px;
         max-height: 25px;

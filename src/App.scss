@@ -19,7 +19,7 @@
   &__right {
 
     @include breakpoints.desktop {
-      width: 30%;
+      width: 31%;
       border-left: 1px solid colors.$Mercury;
     }
   }
@@ -27,7 +27,7 @@
   &__left {
 
     @include breakpoints.desktop {
-      width: 70%;
+      width: 69%;
     }
   }
 }
