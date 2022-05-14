@@ -8,6 +8,12 @@
         height: 4rem;
         margin-top: 1rem;
         box-sizing: border-box;
+        transition: transform .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.03);
+
+        }
 
         @include breakpoints.tablet {
             margin-top: 1.5rem;
