@@ -5,6 +5,7 @@ const CommentsArea = (props) => {
     
     const submitHandler = (event) => {
         event.preventDefault();
+        props.addComment(event.target.comment.value);
     }
     
     return (<>

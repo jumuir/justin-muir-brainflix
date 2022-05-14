@@ -9,16 +9,35 @@ import videos from './data/videos.json';
 import './App.scss';
 
 
-
 class App extends Component {
   state = {
     mainVideo: videoDetails[0],
-    sideVideos: videos
+    videoDetails: videoDetails
   }
 
   changeMainVideo = (videoId) => {
-    const newMainVideo = videoDetails.filter(details => details.id === videoId);
+    const newMainVideo = this.state.videoDetails.filter(details => details.id === videoId);
     this.setState({ mainVideo:newMainVideo[0] });
+  }
+
+  addComment = (comment) => {
+    let newDetails = [...videoDetails]
+    let now = new Date().getTime();
+    newDetails.forEach((vid, index) => {
+      if (vid.id === this.state.mainVideo.id) {
+        const comms = newDetails[index].comments;
+        let newComms = [{
+          name: 'Anonymous',
+          comment: comment,
+          likes: 0,
+          timestamp: now
+        },...comms];
+        
+        newDetails[index].comments = newComms;
+        this.setState({ videoDetails: newDetails});
+        
+      }
+    });
   }
 
 
@@ -30,10 +49,10 @@ class App extends Component {
       <div className='desktop-columns'>
         <div className='desktop-columns__left'>
           <VideoInfo mainVideo={this.state.mainVideo}/>
-          <CommentsArea mainVideo={this.state.mainVideo}/>
+          <CommentsArea mainVideo={this.state.mainVideo} addComment={this.addComment}/>
         </div>
         <div className='desktop-columns__right'>
-          <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo} sideVideos={this.state.sideVideos}/>
+          <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo} sideVideos={videos}/>
         </div>
       </div>
       </>
