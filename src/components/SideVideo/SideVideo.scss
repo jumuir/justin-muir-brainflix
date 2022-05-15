@@ -6,8 +6,14 @@
         display: flex;
         width: 100%;
         height: 4rem;
-        margin-top: 1rem;
+        margin-top: .75rem;
         box-sizing: border-box;
+        transition: transform .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.03);
+
+        }
 
         @include breakpoints.tablet {
             margin-top: 1.5rem;

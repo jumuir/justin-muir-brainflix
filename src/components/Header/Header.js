@@ -12,7 +12,7 @@ const Header = () => {
                 
                 <input className='header__search-container' type='text' placeholder='Search'></input> 
                 
-                <button type='submit' value='submit' className='header__upload-button'>      
+                <button className='header__upload-button'>      
                     <p>UPLOAD</p>
                 </button>
                 
