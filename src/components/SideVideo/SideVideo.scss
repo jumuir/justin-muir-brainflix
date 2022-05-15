@@ -1,0 +1,68 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/breakpoints';
+
+.side-video {
+    &__container {
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        margin-top: .75rem;
+        box-sizing: border-box;
+        transition: transform .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.03);
+
+        }
+
+        @include breakpoints.tablet {
+            margin-top: 1.5rem;
+        }
+    }
+
+    &__image {
+        background-color: colors.$Mercury;
+        object-fit: cover;
+        height: 4rem;
+        width: 6.5rem;
+        border-radius: 4px;
+
+        &-container {
+            width: 6.5rem;
+        }
+    }
+
+    &__copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: 1rem;
+    }
+
+    &__title {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;  
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 0.813rem;
+        line-height: 1.125rem;
+        font-weight: 600;
+
+        @include breakpoints.tablet {
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
+    }
+
+    &__channel {
+        font-size: 0.813rem;
+        line-height: 1.125rem;
+
+        @include breakpoints.tablet {
+            font-size: 0.875rem;
+            line-height: 1.375rem;
+        }
+    }
+
+}
