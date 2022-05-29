@@ -2,7 +2,7 @@ import './VideosList.scss';
 import SideVideo from '../SideVideo/SideVideo';
 
 const VideosList = (props) => {
-    return (<>
+    return (
         <section className='videos-list__container'>
             <h4 className='videos-list__title'>NEXT VIDEOS</h4>
 
@@ -16,7 +16,6 @@ const VideosList = (props) => {
                 />)}
             
         </section>
-    </>
     )
 
 }

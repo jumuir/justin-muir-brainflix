@@ -6,7 +6,7 @@ const Comment = (props) => {
     
     const date = dateMaker(timeDiff);
     
-    return (<>
+    return (
         <section className='comment__container'>
             <div className='comment__left'>
                 <div className='comment__image'></div>
@@ -19,7 +19,6 @@ const Comment = (props) => {
                 <p className='comment__copy'>{props.comment}</p>
             </div>
         </section>
-    </>
     )
 
 }

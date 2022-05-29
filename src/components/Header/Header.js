@@ -2,8 +2,8 @@ import logo from '../../assets/images/logos/BrainFlix-logo.svg';
 import './Header.scss';
 
 const Header = () => {
-    return (<>
-        <div className='header'>
+    return (
+        <header className='header'>
             <div className='header__logo'>
                 <img src={logo} alt='Brainflix logo'/>
             </div>
@@ -19,8 +19,7 @@ const Header = () => {
                 <div className='header__image'></div>
             
             </div>
-        </div>
-    </>
+        </header>
     )
 
 }

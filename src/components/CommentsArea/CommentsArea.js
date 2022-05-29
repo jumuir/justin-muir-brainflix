@@ -8,7 +8,7 @@ const CommentsArea = (props) => {
         props.addComment(event.target.comment.value);
     }
     
-    return (<>
+    return (
         <section className='comments__container'>
             
             <p className='comments__count'>{props.mainVideo.comments.length} Comments</p>
@@ -36,7 +36,6 @@ const CommentsArea = (props) => {
                     />)}
             </div>
         </section>
-    </>
     )
 
 }

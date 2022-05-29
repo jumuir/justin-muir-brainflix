@@ -14,7 +14,7 @@ const VideoInfo = (props) => {
     
     const date = dateMaker(timeDiff);
 
-    return (<>
+    return (
         <section className='video-info__container'>
             
             <div className='video-info__title-container'>
@@ -42,7 +42,6 @@ const VideoInfo = (props) => {
                 <p className='video-info__description'>{desc}</p>
             </div>
         </section>
-    </>
     )
 
 }

@@ -8,7 +8,7 @@ const SideVideo = (props) => {
     }
 
 
-    return (<>
+    return (
         <div 
             className='side-video__container'
             onClick={handleSideVideoClick}
@@ -26,7 +26,6 @@ const SideVideo = (props) => {
             </div>
             
         </div>
-    </>
     )
 
 }
