@@ -4,7 +4,7 @@ import { Component } from 'react';
 import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const API_URL = `https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`;
+const URL = `https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`;
 
 class VideosList extends Component {
     state = {
@@ -12,7 +12,8 @@ class VideosList extends Component {
     }
 
     componentDidMount() {
-        axios.get(API_URL).then(res => {
+        axios.get(URL).then(res => {
+            console.log(res.data);
             this.setState({ sideVideos: res.data });
         }).catch(err => {
             console.log(err);
@@ -30,7 +31,6 @@ class VideosList extends Component {
                 title={content.title} 
                 channel={content.channel} 
                 image={content.image} 
-                changeMainVideo={this.props.changeMainVideo} 
                 />)}
             
         </section>)
