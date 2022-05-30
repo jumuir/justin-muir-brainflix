@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path='/' exact component={VideoPage} />
+          <Route path='/' exact render={routerProps => <VideoPage {...routerProps} />} />
           <Route path= '/upload' component={VideoPage} />
           <Route path='/:id' component={VideoPage} />
         </Switch>

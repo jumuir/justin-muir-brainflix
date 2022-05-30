@@ -4,59 +4,76 @@ import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import VideosList from '../../components/VideosList/VideosList';
 import CommentsArea from '../../components/CommentsArea/CommentsArea';
-import videoDetails from '../../data/video-details.json';
 import './VideoPage.scss';
+import axios from 'axios';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 class VideoPage extends Component {
-  state = {
-    mainVideo: videoDetails[0],
-    videoDetails: videoDetails
-  }
+    state = {
+        mainVideoId: "84e96018-4022-434e-80bf-000ce4cd12b8",
+        videoDetails: {
+            "id": "84e96018-4022-434e-80bf-000ce4cd12b8",
+            "title": "",
+            "channel": "",
+            "image": "",
+            "description": "",
+            "views": "",
+            "likes": "",
+            "duration": "",
+            "video": "",
+            "timestamp": 0,
+            "comments": []
+        } 
+    
+    }
 
-  changeMainVideo = (videoId) => {
-    const newMainVideo = this.state.videoDetails.filter(details => details.id === videoId);
-    this.setState({ mainVideo:newMainVideo[0] });
-  }
+    videoURL = id => {
+        return `https://project-2-api.herokuapp.com/videos/${id}?api_key=${API_KEY}`;
+    }
 
-  addComment = (comment) => {
-    let newDetails = [...videoDetails]
-    let now = new Date().getTime();
-    newDetails.forEach((vid, index) => {
-      if (vid.id === this.state.mainVideo.id) {
-        const comms = newDetails[index].comments;
-        let newComms = [{
-          name: 'Anonymous',
-          comment: comment,
-          likes: 0,
-          timestamp: now
-        },...comms];
-        
-        newDetails[index].comments = newComms;
-        this.setState({ videoDetails: newDetails});
-        
-      }
-    });
-  }
+    fetchVideo = () => {
+        let currentMainVideoId = this.props.match.params.id || this.state.mainVideoId;
 
+        if (!currentMainVideoId) {
+            currentMainVideoId = "84e96018-4022-434e-80bf-000ce4cd12b8";
+        }
 
-  render() {
-    return (
-      <>
-      <Header />
-      <VideoPlayer mainVideo={this.state.mainVideo} />
-      <div className='desktop-columns'>
-        <div className='desktop-columns__left'>
-          <VideoInfo mainVideo={this.state.mainVideo}/>
-          <CommentsArea mainVideo={this.state.mainVideo} addComment={this.addComment}/>
+        axios.get(this.videoURL(currentMainVideoId)).then(res => {
+            console.log(res.data);
+            this.setState({videoDetails: res.data, mainVideoId: currentMainVideoId});
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    componentDidMount(){
+        this.fetchVideo()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps) {
+            this.fetchVideo()
+        }
+    }
+
+    render() {
+        return (
+        <>
+        <Header />
+        <VideoPlayer mainVideo={this.state.videoDetails} />
+        <div className='desktop-columns'>
+            <div className='desktop-columns__left'>
+                <VideoInfo mainVideo={this.state.videoDetails}/>
+                <CommentsArea mainVideo={this.state.videoDetails}/>
+            </div>
+            <div className='desktop-columns__right'>
+                <VideosList mainVideo={this.state.videoDetails}/>
+            </div>
         </div>
-        <div className='desktop-columns__right'>
-          <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo}/>
-        </div>
-      </div>
-      </>
-    );
-  }
+        </>
+        );
+    }
 }
 
 export default VideoPage;
