@@ -1,15 +1,22 @@
 import './VideosList.scss';
 import SideVideo from '../SideVideo/SideVideo';
 import { Component } from 'react';
-import videos from '../../data/videos.json';
+import axios from 'axios';
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = `https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`;
 
 class VideosList extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-            sideVideos : videos,
-        }
+    state = {
+        sideVideos : [],
+    }
+
+    componentDidMount() {
+        axios.get(API_URL).then(res => {
+            this.setState({ sideVideos: res.data });
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
