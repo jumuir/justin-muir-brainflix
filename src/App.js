@@ -5,7 +5,6 @@ import VideoInfo from './components/VideoInfo/VideoInfo';
 import VideosList from './components/VideosList/VideosList';
 import CommentsArea from './components/CommentsArea/CommentsArea';
 import videoDetails from './data/video-details.json';
-import videos from './data/videos.json';
 import './App.scss';
 
 
@@ -52,7 +51,7 @@ class App extends Component {
           <CommentsArea mainVideo={this.state.mainVideo} addComment={this.addComment}/>
         </div>
         <div className='desktop-columns__right'>
-          <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo} sideVideos={videos}/>
+          <VideosList mainVideo={this.state.mainVideo} changeMainVideo={this.changeMainVideo}/>
         </div>
       </div>
       </>
