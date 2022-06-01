@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import Header from '../../components/Header/Header';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import VideosList from '../../components/VideosList/VideosList';
@@ -60,7 +59,6 @@ class VideoPage extends Component {
     render() {
         return (
         <>
-        <Header />
         <VideoPlayer mainVideo={this.state.videoDetails} />
         <div className='desktop-columns'>
             <div className='desktop-columns__left'>
