@@ -19,7 +19,7 @@ const Upload = () => {
                     <textarea name="description" className="upload-form__desc input" id="description" placeholder="Add a description to your video"></textarea>
                 </div>
                 <div className='upload-form__button-container'>
-                    <button id='submit' className="upload-submit">
+                    <button className="upload-submit">
                         <p>PUBLISH</p>
                     </button>
                     <button className="upload-cancel">

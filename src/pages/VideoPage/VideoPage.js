@@ -19,8 +19,8 @@ class VideoPage extends Component {
         return `https://project-2-api.herokuapp.com/videos/${id}?api_key=${API_KEY}`;
     }
 
-    fetchVideo = (id) => {
-        const currentMainVideoId = id || this.props.match.params.id || this.state.videoDetails.id;
+    fetchVideo = () => {
+        const currentMainVideoId = this.props.match.params.id || this.state.videoDetails.id;
 
             axios.get(this.videoURL(currentMainVideoId)).then(res => {
                 this.setState({videoDetails: res.data});
@@ -31,8 +31,7 @@ class VideoPage extends Component {
 
     componentDidMount = () =>{
         axios.get(URL).then(res => {
-            this.setState({ sideVideos: res.data, videoDetails: res.data[0] });
-            this.fetchVideo(res.data[0].id);
+            this.setState({ sideVideos: res.data, videoDetails: res.data[0] }, () => {this.fetchVideo()});        
         }).catch(err => {
             console.log(err);
         });
