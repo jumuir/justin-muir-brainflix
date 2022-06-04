@@ -1,7 +1,17 @@
 import './Upload.scss'
 import thumb from '../../assets/images/images/Upload-video-preview.jpg';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Upload = () => {
+    const history = useHistory();
+    const handlePublish = (e) => {
+        e.preventDefault();
+        if (window.confirm('Are you sure you want to upload?')) {
+            history.push('/');
+        };
+    }
+
     return (
         <section className='upload-page'>
             <h1 className='upload-page__title'>Upload Video</h1>
@@ -23,10 +33,10 @@ const Upload = () => {
                     </div>
                 </div>
                 <div className='upload-form__button-container'>
-                    <button className="upload-submit">
+                    <button className="upload-submit"  onClick={handlePublish}>
                         <p>PUBLISH</p>
                     </button>
-                    <button className="upload-cancel">
+                    <button type='reset' className="upload-cancel">
                         <p>CANCEL</p>
                     </button>
                 </div>
@@ -35,4 +45,4 @@ const Upload = () => {
     )
 }
 
-export default Upload
+export default Upload;
