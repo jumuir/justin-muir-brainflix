@@ -2,8 +2,8 @@ import './Comment.scss';
 import { dateMaker } from '../../utilities/helper-functions';
 
 const Comment = (props) => {
-    const timeDiff = (new Date ()) - (new Date(props.timestamp));
     
+    const timeDiff = (new Date ()) - (new Date(props.timestamp));
     const date = dateMaker(timeDiff);
     
     return (
@@ -14,7 +14,10 @@ const Comment = (props) => {
             <div className='comment__right'>
                 <div className='comment__heading'>
                     <p className='comment__name'>{props.name}</p>
-                    <p className='comment__date'>{date}</p>
+                    <div className='comment__heading-right'>
+                        <p className='comment__date'>{date}</p>
+                        <button className='comment__delete' onClick={() => props.deleteComment(props.id)}></button>
+                    </div>
                 </div>
                 <p className='comment__copy'>{props.comment}</p>
             </div>

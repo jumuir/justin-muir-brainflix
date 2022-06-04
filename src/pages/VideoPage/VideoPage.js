@@ -6,8 +6,8 @@ import CommentsArea from '../../components/CommentsArea/CommentsArea';
 import './VideoPage.scss';
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-const URL = `https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`;
+const API_KEY = `?api_key=${process.env.REACT_APP_API_KEY}`;
+const API_URL = `https://project-2-api.herokuapp.com/`;
 
 class VideoPage extends Component {
     state = {
@@ -16,9 +16,9 @@ class VideoPage extends Component {
     }
 
     videoURL = id => {
-        return `https://project-2-api.herokuapp.com/videos/${id}?api_key=${API_KEY}`;
+        return `${API_URL}videos/${id}${API_KEY}`;
     }
-
+    
     fetchVideo = () => {
         const currentMainVideoId = this.props.match.params.id || this.state.videoDetails.id;
 
@@ -30,7 +30,7 @@ class VideoPage extends Component {
     }
 
     componentDidMount = () =>{
-        axios.get(URL).then(res => {
+        axios.get(`${API_URL}videos${API_KEY}`).then(res => {
             this.setState({ sideVideos: res.data, videoDetails: res.data[0] }, () => {this.fetchVideo()});        
         }).catch(err => {
             console.log(err);
@@ -43,6 +43,27 @@ class VideoPage extends Component {
         }
     }
 
+    addComment = (comment) => {
+        const newComment = {
+            name: "BrainStation Man",
+            comment: comment
+        };
+        axios.post(`${API_URL}videos/${this.state.videoDetails.id}/comments${API_KEY}`, newComment).then(() => this.fetchVideo()).catch(err => console.log(err));
+    }
+
+    deleteComment = (id) => {
+        const delConfirm = window.confirm("are you sure you want to delete this comment?");
+
+        if (delConfirm) {
+            axios.delete(`${API_URL}videos/${this.state.videoDetails.id}/comments/${id}${API_KEY}`)
+            .then(_success => {
+                this.fetchVideo();
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+    }
+
     render() {
         return (
         <>
@@ -50,7 +71,7 @@ class VideoPage extends Component {
         <div className='desktop-columns'>
             <div className='desktop-columns__left'>
                 <VideoInfo mainVideo={this.state.videoDetails}/>
-                <CommentsArea mainVideo={this.state.videoDetails}/>
+                <CommentsArea addComment={this.addComment} deleteComment={this.deleteComment} mainVideo={this.state.videoDetails}/>
             </div>
             <div className='desktop-columns__right'>
                 <VideosList sideVideos={this.state.sideVideos} mainVideo={this.state.videoDetails}/>

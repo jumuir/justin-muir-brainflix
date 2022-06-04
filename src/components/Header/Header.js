@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <header className='header'>
-            <div className='header__logo'>
-                <img src={logo} alt='Brainflix logo'/>
-            </div>
+            <Link to='/'>
+                <div className='header__logo'>
+                    <img src={logo} alt='Brainflix logo'/>
+                </div>
+            </Link>
             
             <div className='header__right'>
                 
