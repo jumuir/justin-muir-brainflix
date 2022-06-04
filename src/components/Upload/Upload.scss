@@ -53,6 +53,7 @@
                 font-size: 2.063rem;
                 line-height: 2.75rem;
                 padding-bottom: 1.5rem;
+                border-bottom: 1px solid colors.$Mercury;
             }
     
             @include breakpoints.desktop {
@@ -62,6 +63,15 @@
     }
 
     &-thumb {
+
+        &__container {
+            margin-bottom: .5rem;
+
+            @include breakpoints.tablet {
+                padding: 1.5rem 0 0;
+                width: 50%;
+            }
+        }
         
         &__subtitle {
             font-size: 0.75rem;
@@ -89,6 +99,26 @@
 
         &__desc{
             height: 6rem;
+
+            
+        }
+
+        &__button-container {
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 6rem;
+
+            @include breakpoints.tablet {
+                height: 2.5rem;
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid colors.$Mercury;
+                flex-direction: row-reverse;
+                
+                
+            }
         }
     }
 
@@ -121,18 +151,24 @@
         }
         
         @include breakpoints.tablet {
-            min-width: 9.375rem;
+            width: 9.375rem;
+            margin: 0;
+            flex-basis: auto;
         }
     }         
 
     &-cancel {
-        margin-top: 1rem;
         background: none;
         color: colors.$BrainFlix-Blue;
         background-color: colors.$White;
 
         &:hover {
             background-color: colors.$Alabaster;
+        }
+
+        @include breakpoints.tablet {
+            width: 9.375rem;
+            margin: 0;
         }
     }
 }
