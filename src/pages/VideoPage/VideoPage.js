@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import Header from '../../components/Header/Header';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import VideosList from '../../components/VideosList/VideosList';
@@ -8,24 +7,12 @@ import './VideoPage.scss';
 import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const URL = `https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`;
 
 class VideoPage extends Component {
     state = {
-        mainVideoId: "84e96018-4022-434e-80bf-000ce4cd12b8",
-        videoDetails: {
-            "id": "84e96018-4022-434e-80bf-000ce4cd12b8",
-            "title": "",
-            "channel": "",
-            "image": "",
-            "description": "",
-            "views": "",
-            "likes": "",
-            "duration": "",
-            "video": "",
-            "timestamp": 0,
-            "comments": []
-        } 
-    
+        sideVideos: [],
+        videoDetails: {}
     }
 
     videoURL = id => {
@@ -33,34 +20,32 @@ class VideoPage extends Component {
     }
 
     fetchVideo = () => {
-        let currentMainVideoId = this.props.match.params.id || this.state.mainVideoId;
+        const currentMainVideoId = this.props.match.params.id || this.state.videoDetails.id;
 
-        if (!currentMainVideoId) {
-            currentMainVideoId = "84e96018-4022-434e-80bf-000ce4cd12b8";
-        }
+            axios.get(this.videoURL(currentMainVideoId)).then(res => {
+                this.setState({videoDetails: res.data});
+            }).catch(err => {
+                console.log(err);
+            });
+    }
 
-        axios.get(this.videoURL(currentMainVideoId)).then(res => {
-            console.log(res.data);
-            this.setState({videoDetails: res.data, mainVideoId: currentMainVideoId});
+    componentDidMount = () =>{
+        axios.get(URL).then(res => {
+            this.setState({ sideVideos: res.data, videoDetails: res.data[0] }, () => {this.fetchVideo()});        
         }).catch(err => {
             console.log(err);
         });
     }
 
-    componentDidMount(){
-        this.fetchVideo()
-    }
-
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
-            this.fetchVideo()
+            this.fetchVideo();
         }
     }
 
     render() {
         return (
         <>
-        <Header />
         <VideoPlayer mainVideo={this.state.videoDetails} />
         <div className='desktop-columns'>
             <div className='desktop-columns__left'>
@@ -68,7 +53,7 @@ class VideoPage extends Component {
                 <CommentsArea mainVideo={this.state.videoDetails}/>
             </div>
             <div className='desktop-columns__right'>
-                <VideosList mainVideo={this.state.videoDetails}/>
+                <VideosList sideVideos={this.state.sideVideos} mainVideo={this.state.videoDetails}/>
             </div>
         </div>
         </>

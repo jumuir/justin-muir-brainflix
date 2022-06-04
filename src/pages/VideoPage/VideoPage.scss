@@ -9,6 +9,15 @@
   font-weight: 400;
 }
 
+a {
+  text-decoration: none;
+  color: colors.$BrainFlix-Black;
+  
+  &:visited {  
+    color: inherit;
+  }
+}
+
 .desktop-columns {
   
   @include breakpoints.desktop {

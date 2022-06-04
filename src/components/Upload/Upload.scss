@@ -1,0 +1,194 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/breakpoints';
+
+.input {
+    font-size: 0.813rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid colors.$Mercury;
+    padding: 0.75rem;
+    height: 2.625rem;
+    background-color: colors.$Alabaster;
+    margin-bottom: 0.75rem;
+    resize: none;
+    overflow: hidden;
+
+    &:focus, &:focus-visible {
+        outline: none;
+        border: 2px solid colors.$BrainFlix-Blue;
+    }
+
+    @include breakpoints.tablet {
+        font-size: 0.875rem;
+        margin-bottom: 0;
+        height: 2.5rem;
+        min-width: 15rem;
+    }
+}
+
+.upload {
+    
+    &-page {
+        padding: 1.5rem 1rem 1rem;
+        color: colors.$BrainFlix-Black;
+        border-top: 1px solid colors.$Mercury;
+
+        @include breakpoints.tablet {
+            padding: 2.25rem 2.25rem 1.5rem;
+        }
+
+        @include breakpoints.desktop {
+            padding: 1.5rem calc((100vw - 63.75rem) / 2);
+        }
+
+        &__title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 700;
+            padding-bottom: 1rem;
+            
+            
+            @include breakpoints.tablet {
+                font-size: 2.063rem;
+                line-height: 2.75rem;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid colors.$Mercury;
+            }
+    
+            @include breakpoints.desktop {
+                padding: 0 1.5rem 1rem 0;
+            }        
+        }
+    }
+
+    &-thumb {
+
+        &__container {
+            margin-bottom: .5rem;
+
+            @include breakpoints.tablet {
+                padding-top: 1.5rem;
+                width: 50%;
+            }
+
+            @include breakpoints.desktop {
+                padding: 0;
+                width: 30%;
+            }
+        }
+        
+        &__subtitle {
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+            color: colors.$Silver;
+            font-weight: 700;
+        }
+
+        &__image {
+            width: 100%;
+            border-radius: 4px;
+        }
+    }
+
+    &-form {
+        
+        &__subtitle {
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+            color: colors.$Silver;
+            font-weight: 700;
+        }
+
+        
+
+        &__desc{
+            height: 6rem;
+
+            
+        }
+
+        &__button-container {
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 6rem;
+
+            @include breakpoints.tablet {
+                height: 2.5rem;
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid colors.$Mercury;
+                flex-direction: row-reverse;
+                
+                
+            }
+        }
+
+        &__top {
+            @include breakpoints.desktop {
+                padding-top: 1.5rem;
+                display: flex;
+                gap: 1.5rem;
+            }
+        }
+
+        &__inputs {
+            @include breakpoints.desktop {
+                flex-grow: 1;
+            }
+        }
+
+    }
+
+    &-submit, &-cancel {
+        display: flex;
+        border-radius: 4px;
+        border: none;
+        align-items: center;
+        height: 2.5rem;
+        font-weight: 700;
+        flex-basis: 100%;
+        color: colors.$White;
+        background-color: colors.$BrainFlix-Blue;
+        padding: 0 2rem;
+        width: 100%;
+        background-image: url('../../assets/images/icons/publish.svg');
+        background-position: left 12px top 50%;
+        background-repeat: no-repeat;
+        background-size: 1.25rem;
+
+        & > p {
+            text-align: center;
+            width: 100%;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        &:hover {
+            background-color: colors.$BrainFlix-DarkBlue;
+        }
+        
+        @include breakpoints.tablet {
+            width: 9.375rem;
+            margin: 0;
+            flex-basis: auto;
+        }
+    }         
+
+    &-cancel {
+        background: none;
+        color: colors.$BrainFlix-Blue;
+        background-color: colors.$White;
+
+        &:hover {
+            background-color: colors.$Alabaster;
+        }
+
+        @include breakpoints.tablet {
+            width: 9.375rem;
+            margin: 0;
+        }
+    }
+}

@@ -11,7 +11,7 @@ const CommentsArea = (props) => {
     return (
         <section className='comments__container'>
             
-            <p className='comments__count'>{props.mainVideo.comments.length} Comments</p>
+            <p className='comments__count'>{props?.mainVideo?.comments?.length ?? 0} Comments</p>
             
             <div className="comments__input-area">
                 <div className="comments__image"></div>
@@ -28,7 +28,7 @@ const CommentsArea = (props) => {
                 </form>
             </div>
             <div>
-                {props.mainVideo.comments.map((content, index) => <Comment
+                {props?.mainVideo?.comments?.map((content, index) => <Comment
                     key={index} 
                     name={content.name} 
                     timestamp={content.timestamp} 
