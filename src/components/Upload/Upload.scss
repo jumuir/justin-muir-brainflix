@@ -68,8 +68,13 @@
             margin-bottom: .5rem;
 
             @include breakpoints.tablet {
-                padding: 1.5rem 0 0;
+                padding-top: 1.5rem;
                 width: 50%;
+            }
+
+            @include breakpoints.desktop {
+                padding: 0;
+                width: 30%;
             }
         }
         
@@ -120,6 +125,21 @@
                 
             }
         }
+
+        &__top {
+            @include breakpoints.desktop {
+                padding-top: 1.5rem;
+                display: flex;
+                gap: 1.5rem;
+            }
+        }
+
+        &__inputs {
+            @include breakpoints.desktop {
+                flex-grow: 1;
+            }
+        }
+
     }
 
     &-submit, &-cancel {
