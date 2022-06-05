@@ -12,18 +12,18 @@ const API_URL = `https://project-2-api.herokuapp.com/`;
 class VideoPage extends Component {
     state = {
         sideVideos: [],
-        videoDetails: {}
+        mainVideoDetails: {}
     }
 
     videoURL = id => {
         return `${API_URL}videos/${id}${API_KEY}`;
     }
     
-    fetchVideo = () => {
-        const currentMainVideoId = this.props.match.params.id || this.state.videoDetails.id;
+    fetchMainVideo = (id) => {
+        const currentMainVideoId = id || this.props.match.params.id || this.state.mainVideoDetails.id;
 
             axios.get(this.videoURL(currentMainVideoId)).then(res => {
-                this.setState({videoDetails: res.data});
+                this.setState({mainVideoDetails: res.data});
             }).catch(err => {
                 console.log(err);
             });
@@ -31,7 +31,7 @@ class VideoPage extends Component {
 
     componentDidMount = () =>{
         axios.get(`${API_URL}videos${API_KEY}`).then(res => {
-            this.setState({ sideVideos: res.data, videoDetails: res.data[0] }, () => {this.fetchVideo()});        
+            this.setState({ sideVideos: res.data, mainVideoDetails: res.data[0] }, () => {this.fetchMainVideo()});        
         }).catch(err => {
             console.log(err);
         });
@@ -39,25 +39,33 @@ class VideoPage extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
-            this.fetchVideo();
+            if(this.props.match.path === '/') {
+                this.fetchMainVideo(this.state.sideVideos[0].id);
+            } else {
+            this.fetchMainVideo();
+            }
         }
     }
 
     addComment = (comment) => {
-        const newComment = {
-            name: "BrainStation Man",
-            comment: comment
-        };
-        axios.post(`${API_URL}videos/${this.state.videoDetails.id}/comments${API_KEY}`, newComment).then(() => this.fetchVideo()).catch(err => console.log(err));
+        if(comment.length === 0) {
+            window.alert('Comment can not be empty.');
+        } else {
+            const newComment = {
+                name: "BrainStation Man",
+                comment: comment
+            };
+            axios.post(`${API_URL}videos/${this.state.mainVideoDetails.id}/comments${API_KEY}`, newComment).then(() => this.fetchMainVideo()).catch(err => console.log(err));
+        }
     }
 
     deleteComment = (id) => {
-        const delConfirm = window.confirm("are you sure you want to delete this comment?");
+        const delConfirm = window.confirm("Are you sure you want to delete this comment?");
 
         if (delConfirm) {
-            axios.delete(`${API_URL}videos/${this.state.videoDetails.id}/comments/${id}${API_KEY}`)
+            axios.delete(`${API_URL}videos/${this.state.mainVideoDetails.id}/comments/${id}${API_KEY}`)
             .then(_success => {
-                this.fetchVideo();
+                this.fetchMainVideo();
             }).catch(error => {
                 console.log(error);
             });
@@ -67,14 +75,14 @@ class VideoPage extends Component {
     render() {
         return (
         <>
-        <VideoPlayer mainVideo={this.state.videoDetails} />
+        <VideoPlayer mainVideo={this.state.mainVideoDetails} />
         <div className='desktop-columns'>
             <div className='desktop-columns__left'>
-                <VideoInfo mainVideo={this.state.videoDetails}/>
-                <CommentsArea addComment={this.addComment} deleteComment={this.deleteComment} mainVideo={this.state.videoDetails}/>
+                <VideoInfo mainVideo={this.state.mainVideoDetails}/>
+                <CommentsArea addComment={this.addComment} deleteComment={this.deleteComment} mainVideo={this.state.mainVideoDetails}/>
             </div>
             <div className='desktop-columns__right'>
-                <VideosList sideVideos={this.state.sideVideos} mainVideo={this.state.videoDetails}/>
+                <VideosList sideVideos={this.state.sideVideos} mainVideo={this.state.mainVideoDetails}/>
             </div>
         </div>
         </>
