@@ -6,12 +6,13 @@ const CommentsArea = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         props.addComment(event.target.comment.value);
+        event.target.comment.value = '';
     }
     
-    return (<>
+    return (
         <section className='comments__container'>
             
-            <p className='comments__count'>{props.mainVideo.comments.length} Comments</p>
+            <p className='comments__count'>{props?.mainVideo?.comments?.length ?? 0} Comments</p>
             
             <div className="comments__input-area">
                 <div className="comments__image"></div>
@@ -28,15 +29,18 @@ const CommentsArea = (props) => {
                 </form>
             </div>
             <div>
-                {props.mainVideo.comments.map((content, index) => <Comment
-                    key={index} 
+                {props?.mainVideo?.comments?.sort((a, b) => {
+                        return (b.timestamp - a.timestamp);
+                    }).map((content) => <Comment
+                    key={content.id}
+                    id={content.id}
                     name={content.name} 
                     timestamp={content.timestamp} 
                     comment={content.comment}
+                    deleteComment={props.deleteComment}
                     />)}
             </div>
         </section>
-    </>
     )
 
 }

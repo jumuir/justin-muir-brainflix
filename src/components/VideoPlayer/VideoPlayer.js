@@ -7,9 +7,11 @@ import volumeImg from '../../assets/images/icons/volume_up.svg';
 const VideoPlayer = (props) => {
     const mainVideo = props.mainVideo;
 
-    return (<>
+    return (
         <section className='video-container'>
-            <video poster={mainVideo.image}></video>
+            <video poster={mainVideo.image}>
+                {/* <source src={`${mainVideo.video}?api_key=farts`} type='video/mp4'/> */}
+            </video>
             
             <div className='video-controls__container'>
                 <div className='video-controls'>
@@ -25,7 +27,6 @@ const VideoPlayer = (props) => {
                 </div>
             </div>
         </section>
-    </>
     )
 
 }
