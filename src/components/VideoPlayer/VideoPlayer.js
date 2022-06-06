@@ -9,7 +9,9 @@ const VideoPlayer = (props) => {
 
     return (
         <section className='video-container'>
-            <video poster={mainVideo.image}></video>
+            <video poster={mainVideo.image}>
+                {/* <source src={`${mainVideo.video}?api_key=farts`} type='video/mp4'/> */}
+            </video>
             
             <div className='video-controls__container'>
                 <div className='video-controls'>

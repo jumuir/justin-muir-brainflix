@@ -1,6 +1,5 @@
 import './Upload.scss'
 import thumb from '../../assets/images/images/Upload-video-preview.jpg';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const Upload = () => {
