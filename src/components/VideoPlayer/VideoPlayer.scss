@@ -95,7 +95,7 @@
 
     &-timeline {
         --ratio: calc(var(--value) / 100);
-        --sx: calc(12px + var(--ratio) * (100% - 12px));
+        --sx: calc(var(--ratio) * (100%));
 
         -webkit-appearance: none;
         background: colors.$BrainFlix-DarkBlack;
@@ -107,7 +107,7 @@
             -webkit-appearance: none;
             width: 12px;
             height: 12px;
-            border-radius: 8px;
+            border-radius: 12px;
             background: #0095FF;
             border: none;
             margin-top: -4px;

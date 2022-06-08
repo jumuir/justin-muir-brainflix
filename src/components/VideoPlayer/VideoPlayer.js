@@ -53,8 +53,9 @@ const VideoPlayer = (props) =>  {
         });
 
         for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
-            e.style.setProperty('--value', playerState.progress);
+            e.style.setProperty('--value', progress);
         }
+
     };
     
     const handleVideoProgress = (event) => {
@@ -79,17 +80,19 @@ const VideoPlayer = (props) =>  {
         });
     };
     
-    // trying to reset video player state on page switch
-    // useEffect(() => {
-    //     return () => {
-    //         setPlayerState({
-    //             isPlaying: false,
-    //             progress: 0,
-    //             isMuted: false,
-    //             isFullscreen: false
-    //         })
-    //     }
-    // }, [videoElem]);
+
+    useEffect(() => {
+            setPlayerState({
+                isPlaying: false,
+                progress: 0,
+                isMuted: false,
+                isFullscreen: false
+            })
+
+            for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
+                e.style.setProperty('--value', 0);
+            }
+    }, [props.mainVideo]);
 
     const handleEnd = () => {
         setPlayerState({
