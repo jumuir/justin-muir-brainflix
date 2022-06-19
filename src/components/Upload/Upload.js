@@ -1,14 +1,21 @@
 import './Upload.scss'
-import thumb from '../../assets/images/images/Upload-video-preview.jpg';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const Upload = () => {
+    
     const history = useHistory();
+    
     const handlePublish = (e) => {
         e.preventDefault();
         if (window.confirm('Are you sure you want to upload?')) {
+            console.log(e);
             history.push('/');
         };
+    }
+
+    const handleImage = (e) => {
+        console.log(e.target.src);
     }
 
     return (
@@ -18,7 +25,7 @@ const Upload = () => {
                 <div className='upload-form__top'>
                     <div className='upload-thumb__container'>
                         <h2 className='upload-thumb__subtitle'>VIDEO THUMBNAIL</h2>
-                        <img className='upload-thumb__image' src={thumb} alt=''/>
+                        <img className='upload-thumb__image' onClick={handleImage} id="image" src='http://localhost:8080/images/upload-default.jpg' alt=''/>
                     </div>
                     <div className='upload-form__inputs'>
                         <div className='upload-form__container'>

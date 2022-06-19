@@ -7,7 +7,7 @@ import './VideoPage.scss';
 import axios from 'axios';
 
 const API_KEY = `?api_key=${process.env.REACT_APP_API_KEY}`;
-const API_URL = `https://project-2-api.herokuapp.com/`;
+const API_URL = `http://localhost:8080/`;
 
 class VideoPage extends Component {
     state = {
@@ -64,12 +64,21 @@ class VideoPage extends Component {
 
         if (delConfirm) {
             axios.delete(`${API_URL}videos/${this.state.mainVideoDetails.id}/comments/${id}${API_KEY}`)
+                .then(_success => {
+                    this.fetchMainVideo();
+                }).catch(error => {
+                    console.log(error);
+                });
+        }
+    }
+
+    likeVideo = () => {
+        axios.put(`${API_URL}videos/${this.state.mainVideoDetails.id}/likes${API_KEY}`)
             .then(_success => {
                 this.fetchMainVideo();
             }).catch(error => {
                 console.log(error);
             });
-        }
     }
 
     render() {
@@ -78,7 +87,7 @@ class VideoPage extends Component {
         <VideoPlayer mainVideo={this.state.mainVideoDetails} />
         <div className='desktop-columns'>
             <div className='desktop-columns__left'>
-                <VideoInfo mainVideo={this.state.mainVideoDetails}/>
+                <VideoInfo mainVideo={this.state.mainVideoDetails} likeVideo={this.likeVideo}/>
                 <CommentsArea addComment={this.addComment} deleteComment={this.deleteComment} mainVideo={this.state.mainVideoDetails}/>
             </div>
             <div className='desktop-columns__right'>
