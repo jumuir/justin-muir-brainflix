@@ -103,6 +103,7 @@
     &__likes {
         width: 50%;
         color: colors.$Silver;
+        
 
         @include breakpoints.tablet {
             width: auto;
@@ -112,6 +113,7 @@
         & img {
             height: 1rem;
             vertical-align: text-bottom;
+            cursor: pointer;
         }
 
         & span {
