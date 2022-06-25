@@ -1,10 +1,10 @@
 import { Component } from 'react';
+import axios from 'axios';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import VideoInfo from '../../components/VideoInfo/VideoInfo';
 import VideosList from '../../components/VideosList/VideosList';
 import CommentsArea from '../../components/CommentsArea/CommentsArea';
 import './VideoPage.scss';
-import axios from 'axios';
 
 const API_KEY = `?api_key=${process.env.REACT_APP_API_KEY}`;
 const API_URL = `http://localhost:8080/`;
@@ -81,10 +81,19 @@ class VideoPage extends Component {
             });
     }
 
+    addView = () => {
+        axios.put(`${API_URL}videos/${this.state.mainVideoDetails.id}/views${API_KEY}`)
+            .then(_success => {
+                this.fetchMainVideo();
+            }).catch(error => {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
         <>
-        <VideoPlayer mainVideo={this.state.mainVideoDetails} />
+        <VideoPlayer mainVideo={this.state.mainVideoDetails} addView={this.addView} />
         <div className='desktop-columns'>
             <div className='desktop-columns__left'>
                 <VideoInfo mainVideo={this.state.mainVideoDetails} likeVideo={this.likeVideo}/>

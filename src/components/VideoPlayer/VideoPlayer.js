@@ -1,7 +1,6 @@
-import './VideoPlayer.scss';
 import { useEffect, useRef, useState } from 'react';
 import { secondsToTime } from '../../utilities/helper-functions';
-
+import './VideoPlayer.scss';
 
 const VideoPlayer = (props) =>  {
     const videoElem = useRef(null);
@@ -23,17 +22,6 @@ const VideoPlayer = (props) =>  {
                 videoElem.current.webkitRequestFullscreen();
             } else if (videoElem.current.msRequestFullscreen) {
                 videoElem.current.msRequestFullscreen();
-            }
-        }
-
-        // this code doesn't do anything since the fullscreen video reverts to regular controls
-        else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
             }
         }
     }
@@ -104,6 +92,8 @@ const VideoPlayer = (props) =>  {
         for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
             e.style.setProperty('--value', 100);
         }
+
+        props.addView();
     }
         
     useEffect(() => {

@@ -1,7 +1,7 @@
-import './Upload.scss'
-import { useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import './Upload.scss'
 
 const API_URL = `http://localhost:8080/`;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -9,29 +9,30 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const Upload = () => {
     
     const history = useHistory();
-    const [uploadImage, setUploadImage] = useState(null);
+    const [uploadImage, setUploadImage] = useState('');
 
     const handlePublish = async (e) => {
         e.preventDefault();
+        
         console.log(e.target[0].files[0]);
-    
         const formData = new FormData();
-        if (uploadImage) {
+        if (uploadImage !== '') {
             formData.append("image",  e.target[0].files[0], e.target[0].files[0].name);
         }
         formData.append("title", e.target[1].value);
         formData.append("description", e.target[2].value);
-        console.log(e.target[1].value, e.target[2].value);
+        
         if (window.confirm('Are you sure you want to upload?')) {
-            console.log(e);
+            
             await axios.post(`${API_URL}videos?api_key=${API_KEY}`, formData).then(res => console.log(res)).catch(err => console.log(err));
             history.push('/');
         };
     }
 
-    const handleImage = (e) => {
-        console.log(e);
-        setUploadImage({ uploadImage: e.target.files[0]});
+    const handleImage = async (e) => {
+        console.log(e.target.previousSibling.style.opacity);
+        setUploadImage({ uploadImage: e.target.files[0].name});
+        e.target.previousSibling.style.opacity = 1;
     }
 
     return (
@@ -43,7 +44,9 @@ const Upload = () => {
                         <h2 className='upload-thumb__subtitle'>VIDEO THUMBNAIL</h2>
                         <div className='upload-thumb__image-container'>
                             <img className='upload-thumb__image' id="image" src='http://localhost:8080/images/upload-default.jpg' alt=''/>
-                            <label htmlFor="img-file" className="upload-thumb__image-btn">Select Image</label>
+                            <label htmlFor="img-file" className="upload-thumb__image-btn">
+                                {uploadImage !== '' ? `Image Selected` : 'Select Image'}
+                            </label>
                             <input type='file' accept="image/png, image/jpeg" id='img-file' onChange={handleImage}/>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
-import './VideosList.scss';
 import SideVideo from '../SideVideo/SideVideo';
+import './VideosList.scss';
 
 const VideosList = (props) => {
 
@@ -19,4 +19,4 @@ const VideosList = (props) => {
         </section>)
 }
 
-export default VideosList
+export default VideosList;
