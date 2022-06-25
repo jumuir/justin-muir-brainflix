@@ -31,7 +31,7 @@ const Upload = () => {
 
     const handleImage = async (e) => {
         console.log(e.target.previousSibling.style.opacity);
-        setUploadImage({ uploadImage: e.target.files[0].name});
+        setUploadImage(e.target.files[0].name);
         e.target.previousSibling.style.opacity = 1;
     }
 
@@ -45,7 +45,7 @@ const Upload = () => {
                         <div className='upload-thumb__image-container'>
                             <img className='upload-thumb__image' id="image" src='http://localhost:8080/images/upload-default.jpg' alt=''/>
                             <label htmlFor="img-file" className="upload-thumb__image-btn">
-                                {uploadImage !== '' ? `Image Selected` : 'Select Image'}
+                                {uploadImage !== '' ? `${uploadImage}` : 'Select Image'}
                             </label>
                             <input type='file' accept="image/png, image/jpeg" id='img-file' onChange={handleImage}/>
                         </div>
