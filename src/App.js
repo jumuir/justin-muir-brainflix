@@ -12,7 +12,7 @@ const App = () =>{
       <Switch>
         <Route path='/' exact render={routerProps => <VideoPage {...routerProps} />} />
         <Route path= '/upload' component={UploadPage} />
-        <Route path='/:id' component={VideoPage} />
+        <Route path='/video/:id' component={VideoPage} />
       </Switch>
     </BrowserRouter>
   );
