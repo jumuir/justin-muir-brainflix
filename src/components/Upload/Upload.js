@@ -14,7 +14,25 @@ const Upload = () => {
     const handlePublish = async (e) => {
         e.preventDefault();
         
-        console.log(e.target[0].files[0]);
+        e.target[1].classList.remove('error-state');
+        e.target[2].classList.remove('error-state');
+
+        let emptyValue = false;
+        if (e.target[1].value === '') { 
+            e.target[1].classList.add('error-state');
+            emptyValue = true;
+        }
+        if (e.target[2].value === '') {
+            e.target[2].classList.add('error-state');
+            emptyValue = true;
+        }
+
+        if (emptyValue) {
+            alert('Please fill in the form fields.')
+            return false;
+        }
+        
+        
         const formData = new FormData();
         if (uploadImage !== '') {
             formData.append("image",  e.target[0].files[0], e.target[0].files[0].name);
@@ -30,7 +48,7 @@ const Upload = () => {
     }
 
     const handleImage = async (e) => {
-        console.log(e.target.previousSibling.style.opacity);
+        
         setUploadImage(e.target.files[0].name);
         e.target.previousSibling.style.opacity = 1;
     }

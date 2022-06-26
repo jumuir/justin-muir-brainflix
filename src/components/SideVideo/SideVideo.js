@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SideVideo = (props) => {
 
     return (
-        <Link to = {`/${props.id}`}>
+        <Link to = {`/video/${props.id}`}>
             <div className='side-video__container'>
                 <div className='side-video__image-container'>
                     <img className='side-video__image' src={props.image} alt=''/>
